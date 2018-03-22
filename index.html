@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Thinkful - YouTube</title>
+    <link href="index.css" rel="stylesheet" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <main role="main">
+      <h1>Enter a Song You'd Like to Know the Lyrics to & If It Has Swears!</h1>
+        <form action="#" class="js-search-form">
+          <fieldset>
+            <legend>Artist/Song Search</legend>
+              <label for="artist-input">Input Artist</label>
+                <input type="text" class="artist" aria-label="enter artist" required><br>
+                
+              <label for="title-input">Input Title</label>
+                <input type="title" class="title" aria-label="song title" required><br>
+              <button type="submit">Search</button>
+          </fieldset>
+        </form>
+      <h2>Results</h2>
+      <div class="js-search-results"></div>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
