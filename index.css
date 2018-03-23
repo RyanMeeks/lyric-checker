@@ -1,8 +1,19 @@
+* {
+    box-sizing: border-box;
+}
 .js-search-results {
     white-space: pre-wrap;
 }
+.green {
+    background-color: green;
+}
 
-
-
+.red    {
+    background-color: red;
+}
+.video  {
+    height: 180px;
+    width: 320px;
+}
 /* min width small to large
   max width large to small */

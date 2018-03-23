@@ -19,8 +19,15 @@ function getYoutubeDataFromApi(song, callback3) {
        $.getJSON(YOUTUBE_URL, query, callback3);
 }
 function displayYoutubeApiData(data3) {
+    const displayTitle = data3.items[0].snippet.title;
+    const videoUrl = data3.items[0].id.videoId;
+    console.log(displayTitle);
     console.log(data3);
-    console.log("this works");
+    $(".title").html(`<h2>${displayTitle}</h2>`);
+    $(".video").html(`<iframe class="video" src="https://www.youtube.com/embed/${videoUrl}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`)
+   console.log(videoThumbnaillUrl); 
+
+
 }
 
 function getSwearApi(lyrics, callback2) {
@@ -39,17 +46,22 @@ function displaySwearApiData(data) {
     console.log(data);
     const count = data['bad-words-total'];
     const swearWords = data['bad-words-list'];
+    if (count === 0) {
+        $(".swear-results").html("<p><strong>No Swears! Play Away!</strong></p>");
+        $("body").addClass("green");
+    }
 
-    console.log("howdy");
-    console.log(count);
-    console.log(swearWords);
+    else {
+        $(".swear-results").html(`<p><strong>WARNING!!</strong> This song contains ${count} swear words. They are ${swearWords}`);
+        $("body").addClass("red");
+    }
 }
 
-function displaySearchData(data) {
- results = data.lyrics;
+function displaySearchData(data2) {
+ results = data2.lyrics;
  getSwearApi(results, displaySwearApiData);
  $(".js-search-results").html(results);
- console.log(data);
+ console.log(data2);
 }
 
 //watches for the form to be submitted
