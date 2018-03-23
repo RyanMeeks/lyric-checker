@@ -5,26 +5,35 @@
     <meta name="viewport" content="width=device-width">
     <title>Thinkful - YouTube</title>
     <link href="index.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
   <body>
     <main role="main">
-      <h1>Enter a Song You'd Like to Know the Lyrics to & If It Has Swears!</h1>
+      <h1 style="text-align: center">Enter a Song</h1>
+      <h2 style="text-align: center">We'll Let You Know If It's Clean or Dirty</h2> 
         <form action="#" class="js-search-form">
           <fieldset>
             <legend>Artist/Song Search</legend>
+              <div class="label-container">
               <label for="artist-input">Input Artist</label>
-                <input type="text" class="artist" aria-label="enter artist" required><br>
+                <input type="text" class="artist" aria-label="enter artist" required>
+              </div>
+              <div class="label-container">
               <label for="title-input">Input Title</label>
-                <input type="title" class="title" aria-label="song title" required><br>
-              <button type="submit">Search</button>
+                <input type="title" class="title" aria-label="song title" required>
+              </div>
+              <button class="submit" type="submit">Search</button>
           </fieldset>
         </form>
       <div class="title"></div>
       <div class="swear-results"></div>
-      <div class="video"></div> <!-- add accessibility info here and in jssearchresults -->
       <div class="js-search-results"></div>
     </main>
     <script src="script.js"></script>
   </body>
+  <footer>
+      <p style="text-align:center">Powered By <a href="http://www.non-stopentertainment.com">Non-Stop Entertainment</a>
+      </p>
+    </footer>
 </html>

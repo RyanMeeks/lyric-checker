@@ -24,8 +24,8 @@ function displayYoutubeApiData(data3) {
     console.log(displayTitle);
     console.log(data3);
     $(".title").html(`<h2>${displayTitle}</h2>`);
-    $(".video").html(`<iframe class="video" src="https://www.youtube.com/embed/${videoUrl}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`)
-   console.log(videoThumbnaillUrl); 
+    $(".js-search-results").html(`<iframe class="video" src="https://www.youtube.com/embed/${videoUrl}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`);
+ 
 
 
 }
@@ -60,7 +60,7 @@ function displaySwearApiData(data) {
 function displaySearchData(data2) {
  results = data2.lyrics;
  getSwearApi(results, displaySwearApiData);
- $(".js-search-results").html(results);
+ $(".js-search-results").append(results);
  console.log(data2);
 }
 
@@ -76,12 +76,14 @@ function watchSubmit() {
     const title = titleInput.val().trim();
     artistInput.val('');
     titleInput.val('');
+    
     getDataFromApi(artist, title, displaySearchData);
   });
 }
 
 
 $(watchSubmit);
+
 //make function to call api,
 // look at the output..
 // figure out how to put it on the screen. 
