@@ -1,7 +1,17 @@
 * {
     box-sizing: border-box;
     font-family: 'Anton', sans-serif;
+    color: white;
+    letter-spacing: 1px;
 
+}
+
+body{
+    background: url("https://cdn.allwallpaper.in/wallpapers/1999x1124/5495/dj-blue-1999x1124-wallpaper.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 .js-search-results {
     white-space: pre-wrap;
@@ -29,7 +39,7 @@ legend  {
 
 fieldset    {
     padding: 10px;
-    border: black 2px solid;
+    border: white 2px solid;
     border-radius: 10px;
 }
 
@@ -59,8 +69,8 @@ input {
     padding: 15px;
     font-size: 1.2em;
     background-color: gray;
-    color: black;
-    border: 1px black solid;
+    color: white;
+    border: 1px white solid;
     border-radius: 3px;
     width: 50%;
 }

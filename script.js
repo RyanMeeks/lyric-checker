@@ -1,5 +1,5 @@
 const LYRICS_URL = "https://private-anon-b1f27724d6-lyricsovh.apiary-proxy.com/v1";
-const SWEARS_URL = "http://LocalHost:3000";
+const SWEARS_URL = "https://cryptic-badlands-95093.herokuapp.com/";
 const YOUTUBE_URL = "https://www.googleapis.com/youtube/v3/search";
 
 window.addEventListener('error', function(e) {
