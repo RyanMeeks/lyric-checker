@@ -1,6 +1,11 @@
 const LYRICS_URL = "https://private-anon-b1f27724d6-lyricsovh.apiary-proxy.com/v1";
-const SWEARS_URL = "https://neutrinoapi.com/bad-word-filter";
+const SWEARS_URL = "http://LocalHost:3000";
 const YOUTUBE_URL = "https://www.googleapis.com/youtube/v3/search";
+
+window.addEventListener('error', function(e) {
+    console.log(e);
+    console.log(e.target);
+}, true);
 
 function getDataFromApi(artist, title, callback) {
    
@@ -16,18 +21,29 @@ function getYoutubeDataFromApi(song, callback3) {
         q: song,
         part: 'snippet'
        };
-       $.getJSON(YOUTUBE_URL, query, callback3);
+        $.getJSON(YOUTUBE_URL, query, callback3);
+
+    
+   
 }
 function displayYoutubeApiData(data3) {
+    if ( data3.items.length > 0) {
+        
+    
+    console.log(data3);
     const displayTitle = data3.items[0].snippet.title;
     const videoUrl = data3.items[0].id.videoId;
     console.log(displayTitle);
-    console.log(data3);
+    
+
     $(".title").html(`<h2>${displayTitle}</h2>`);
-    $(".js-search-results").html(`<iframe class="video" src="https://www.youtube.com/embed/${videoUrl}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`);
- 
-
-
+    $(".js-search-results").html(`<iframe class="video" src="https://www.youtube.com/embed/${videoUrl}" frameborder="0"" allowfullscreen></iframe>`);
+    $(".main-title").hide();
+    $(".submit").html("Search Again");
+    }
+    else {
+        $(".title").html('<h2>There are no results. Please try again!</h2>');
+    }
 }
 
 function getSwearApi(lyrics, callback2) {
@@ -43,24 +59,27 @@ function getSwearApi(lyrics, callback2) {
 }
     
 function displaySwearApiData(data) {
-    console.log(data);
+    
     const count = data['bad-words-total'];
-    const swearWords = data['bad-words-list'];
+    const swearWords = data['bad-words-list'].join(", ");
+    
     if (count === 0) {
-        $(".swear-results").html("<p><strong>No Swears! Play Away!</strong></p>");
-        $("body").addClass("green");
+        $(".swear-results").html("<h2><strong>No Swears! Play Away!</strong></h2>");
+        $("h2").removeClass().addClass("green");
     }
 
     else {
         $(".swear-results").html(`<p><strong>WARNING!!</strong> This song contains ${count} swear words. They are ${swearWords}`);
-        $("body").addClass("red");
+        $("h2").removeClass().addClass("red");
     }
 }
 
 function displaySearchData(data2) {
- results = data2.lyrics;
+ const results = data2.lyrics;
+ 
  getSwearApi(results, displaySwearApiData);
- $(".js-search-results").append(results);
+      $(".js-search-results").append(results);
+
  console.log(data2);
 }
 
@@ -70,8 +89,11 @@ function watchSubmit() {
     //prevent it from resetting
     event.preventDefault();
     //save as constants to clear out form after submission.
-    const artistInput = $(this).find('.artist');
-    const titleInput = $(this).find('.title');
+    $(".title").empty();
+    $(".js-search-results").empty();
+    $(".swear-results").empty();
+    const artistInput = $(this).find('.input-artist');
+    const titleInput = $(this).find('.input-title');
     const artist = artistInput.val().trim();
     const title = titleInput.val().trim();
     artistInput.val('');

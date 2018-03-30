@@ -8,10 +8,14 @@
 }
 .green {
     background-color: green;
+    width: 50%;
+    margin: 10px auto 10px auto;
 }
 
 .red    {
     background-color: red;
+    width: 50%;
+    margin: 10px auto 10px auto;
 }
 
 .video  {
@@ -65,7 +69,7 @@ footer {
     margin-top: 50px;
 }
 .swear-results {
-    display:block;
+    text-align: center
 }
 label {
     display:block;
@@ -79,10 +83,17 @@ label {
     text-align: center;
 }
 
-@media only screen and (min-width: 550px) {
+/*@media only screen and (min-width: 550px) {
+    
+}*/
+@media only screen and (min-width: 768px) {
     fieldset {
-        max-width: 550px;
+        max-width: 768px;
         margin: auto;
+    }
+    .video  {
+        height: 360px;
+        width: 640px;
     }
 }
 /* min width small to large
