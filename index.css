@@ -1,6 +1,6 @@
 * {
     box-sizing: border-box;
-    font-family: 'Work Sans', serif;
+    font-family: 'Oswald', sans-serif;
     color: white;
 }
 
@@ -29,12 +29,14 @@ body{
     background-color: green;
     width: 50%;
     margin: 10px auto 10px auto;
+    text-align: center;
 }
 
 .red    {
     background-color: red;
     width: 50%;
     margin: 10px auto 10px auto;
+    text-align: center;
 }
 
 .video  {
@@ -88,20 +90,32 @@ input {
 footer {
     margin-top: 50px;
 }
-.swear-results {
-    text-align: center
-}
+
 label {
     display:block;
 }
+
 .video {
     display:block;
     margin: 0 auto 10px auto;
 }
 
+.swear-results  {
+    text-align: center;
+}
 .js-search-results  {
     text-align: center;
 }
+
+.blink_me {
+    animation: blinker 1s linear infinite;
+  }
+  
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
 
 /*@media only screen and (min-width: 550px) {
     
@@ -111,10 +125,12 @@ label {
         max-width: 768px;
         margin: auto;
     }
+    
     .video  {
         height: 360px;
         width: 640px;
     }
+
 }
 /* min width small to large
   max width large to small */
