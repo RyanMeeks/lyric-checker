@@ -1,7 +1,6 @@
 * {
     box-sizing: border-box;
-    font-family: 'Anton', sans-serif;
-    letter-spacing: 1px;
+    font-family: 'Work Sans', serif;
     color: white;
 }
 
@@ -11,6 +10,17 @@ body{
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
+}
+
+.dirty  {
+    font-family: 'Creepster', cursive;
+}
+
+.clean  {
+    font-family: 'Pacifico', cursive;
+}
+.main-title h1   {
+    font-family: 'Monoton', cursive;
 }
 .js-search-results {
     white-space: pre-wrap;
