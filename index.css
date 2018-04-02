@@ -22,21 +22,12 @@ body{
 .main-title h1   {
     font-family: 'Monoton', cursive;
 }
-.js-search-results {
-    white-space: pre-wrap;
-}
-.green {
-    background-color: green;
-    width: 50%;
-    margin: 10px auto 10px auto;
-    text-align: center;
-}
 
-.red    {
-    background-color: red;
-    width: 50%;
-    margin: 10px auto 10px auto;
+.lyrics {
+    white-space: pre-wrap;
+    background-color: rgba(0, 0, 0, 0.822);
     text-align: center;
+    padding: 20px;
 }
 
 .video  {
@@ -60,7 +51,6 @@ fieldset    {
     padding: 5px;
 }
 
-
 input {
     padding: 4px;
     border: grey 1px solid;
@@ -80,7 +70,7 @@ input {
     margin: 0 auto 0 auto;
     padding: 15px;
     font-size: 1.2em;
-    background-color: gray;
+    background-color: #2d3877;
     color: white;
     border: 1px white solid;
     border-radius: 3px;
