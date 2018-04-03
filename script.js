@@ -1,23 +1,44 @@
-const LYRICS_URL = "https://private-anon-b1f27724d6-lyricsovh.apiary-proxy.com/v1";
+const LYRICS_URL = "https://api.lyrics.ovh/v1";
 const SWEARS_URL = "https://cryptic-badlands-95093.herokuapp.com/";
 const YOUTUBE_URL = "https://www.googleapis.com/youtube/v3/search";
+let youTubeScore = false;
+let lyricCheckerScore = false;
 
-//API Call to GET lyrics
-function getLyricDataFromApi(artist, title, callback) {
-    const newURL = `${LYRICS_URL}/${artist}/${title}`;
-
-    $.getJSON(newURL, callback);
-    
+//API Call to GET lyrics using ajax
+function getLyricDataFromApi(artist, title, callback)   {
+    const settings = {
+        url: `${LYRICS_URL}/${artist}/${title}`,
+        datatype: 'json',
+        type: 'GET',
+        success: callback,
+        error: function(err) {
+            lyricCheckerScore = true;
+            noResults(lyricCheckerScore);
+        }
+    };
+    $.ajax(settings);
+    console.log(settings);
     const youTubeString = `${artist} - ${title}`;
     getYoutubeDataFromApi(youTubeString, displayYoutubeApiData);
 }
 
+//checks NO RESULTS and Displays the outcome.
+function noResults(lyricCheckerScore) {
+    if (lyricCheckerScore === true && youTubeScore === true) {
+        $(".lyrics").html('<h2 style="text-align:center">There are no results. Please check your spelling and try again!</h2>');
+    }
+    else if (lyricCheckerScore === true && youTubeScore === false) {
+        $(".lyrics").html("<h2> No lyrics found. Please check the spelling and enjoy this related video.</h2>");
+    }
+}
+
 //DISPLAY LYRICS
 function displaySearchData(data2) {
+    youTubeScore = false;
     const results = data2.lyrics;
-    getSwearApi(results, displaySwearApiData);
-         $(".lyrics").append(results);
-   }
+        getSwearApi(results, displaySwearApiData);
+        $(".lyrics").html(`${results}`);
+}
 
 //API CALL to get YouTube Video
 function getYoutubeDataFromApi(song, callback3) {
@@ -38,9 +59,10 @@ function displayYoutubeApiData(data3) {
         $(".js-search-results").html(`<iframe class="video" src="https://www.youtube.com/embed/${videoUrl}" title="${displayTitle}" frameborder="0" allowfullscreen></iframe>`);
         $(".main-title").hide();
         $(".submit").html("Search Again");
+        youTubeScore = false;
     }
     else {
-        $(".title").html('<h2>There are no results. Please check your spelling and try again!</h2>');
+        youTubeScore = true;
     }
 }
 
@@ -64,11 +86,9 @@ function displaySwearApiData(data) {
     if (count === 0) {
         $(".swear-results").html(`<p style="background-color: green">This song contains 0 swears. Play away, but check the lyrics for inappropriate innuendos!</p>`);
     }
-
     else if (count === 1) {
         $(".swear-results").html(`<p style="background-color:red"><strong class="blink_me">WARNING!!</strong> This song contains only one swear word. It is <strong>${swearWords}</strong>.</p>`);  
     }
-
     else {
         $(".swear-results").html(`<p style="background-color:red"><strong class="blink_me">WARNING!!</strong> This song contains ${count} swear words. They are <strong>${swearWords}</strong>.</p>`);
     }
@@ -93,6 +113,5 @@ function watchSubmit() {
     getLyricDataFromApi(artist, title, displaySearchData);
   });
 }
-
 
 $(watchSubmit);
