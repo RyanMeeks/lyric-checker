@@ -36,8 +36,8 @@ function noResults(lyricCheckerScore) {
 function displaySearchData(data2) {
     youTubeScore = false;
     const results = data2.lyrics;
-        getSwearApi(results, displaySwearApiData);
-        $(".lyrics").html(`${results}`);
+    getSwearApi(results, displaySwearApiData);
+    $(".lyrics").html(`${results}`);
 }
 
 //API CALL to get YouTube Video
@@ -46,7 +46,7 @@ function getYoutubeDataFromApi(song, callback3) {
         key: "AIzaSyCOFx-c_YF08zb4utaaxy4yaTrmiR80xaY",
         q: song,
         part: 'snippet'
-       };
+    };
     $.getJSON(YOUTUBE_URL, query, callback3);
 }
 

@@ -4,7 +4,7 @@
     color: white;
 }
 
-body{
+body    {
     background: url("https://cdn.allwallpaper.in/wallpapers/1999x1124/5495/dj-blue-1999x1124-wallpaper.jpg");
     background-attachment: fixed;
     background-size: cover;
@@ -19,6 +19,7 @@ body{
 .clean  {
     font-family: 'Pacifico', cursive;
 }
+
 .main-title h1   {
     font-family: 'Monoton', cursive;
 }
@@ -107,9 +108,6 @@ label {
     }
   }
 
-/*@media only screen and (min-width: 550px) {
-    
-}*/
 @media only screen and (min-width: 768px) {
     fieldset {
         max-width: 768px;
