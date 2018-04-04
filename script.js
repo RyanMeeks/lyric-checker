@@ -25,10 +25,10 @@ function getLyricDataFromApi(artist, title, callback)   {
 //checks NO RESULTS and Displays the outcome.
 function noResults(lyricCheckerScore) {
     if (lyricCheckerScore === true && youTubeScore === true) {
-        $(".lyrics").html('<h2 style="text-align:center">There are no results. Please check your spelling and try again!</h2>');
+        $(".lyrics").html(`<h2 style="text-align:center;background-color:rgba(0, 0, 0, 0.822)">There are no results. Please check your spelling and try again!</h2>`);
     }
     else if (lyricCheckerScore === true && youTubeScore === false) {
-        $(".lyrics").html("<h2> No lyrics found. Please check the spelling and enjoy this related video.</h2>");
+        $(".lyrics").html(`<h2 style="text-align:center;background-color:rgba(0, 0, 0, 0.822)">There are no results, Please check your spelling and enjoy this related video!</h2>`);
     }
 }
 
@@ -37,7 +37,7 @@ function displaySearchData(data2) {
     youTubeScore = false;
     const results = data2.lyrics;
     getSwearApi(results, displaySwearApiData);
-    $(".lyrics").html(`${results}`);
+    $(".lyrics").html(`<p style="background-color:rgba(0,0,0, .842)">${results}</p>`);
 }
 
 //API CALL to get YouTube Video
