@@ -41,13 +41,13 @@ function displaySearchData(data2) {
 }
 
 //API CALL to get YouTube Video
-function getYoutubeDataFromApi(song, callback3) {
+function getYoutubeDataFromApi(song, callback) {
     const query = {
         key: "AIzaSyCOFx-c_YF08zb4utaaxy4yaTrmiR80xaY",
         q: song,
         part: 'snippet'
     };
-    $.getJSON(YOUTUBE_URL, query, callback3);
+    $.getJSON(YOUTUBE_URL, query, callback);
 }
 
 //DISPLAY YouTube API Data
@@ -67,7 +67,7 @@ function displayYoutubeApiData(data3) {
 }
 
 //API CALL to check lyrics for swears
-function getSwearApi(lyrics, callback2) {
+function getSwearApi(lyrics, callback) {
     const query = {
         userId: "ryanmeeks613",
         apiKey: "jBv4yT3h3R2TOiy1jxtHj456q6C7mTmN6xsc2aTrbMax3ue8",
@@ -75,7 +75,7 @@ function getSwearApi(lyrics, callback2) {
         "output format": "JSON",
         "censor-character": "%"
     }
-    $.getJSON(SWEARS_URL, query, callback2);
+    $.getJSON(SWEARS_URL, query, callback);
 }
 
 //DISPLAY SWEAR API Data
